@@ -151,13 +151,13 @@ class PexipMacroApp(customtkinter.CTk):
                 self.macro_entry.insert(0, self.js_file_path)
                 self.macro_entry.configure(state="readonly")
                 self.console_text.insert(tk.END, f"\nSelected JS file: {self.js_file_path}\n")
-                self.logger.info(f"\nSelected JS file: {self.js_file_path}\n")
+                self.logger.info(f"Selected JS file: {self.js_file_path}\n")
                 self.console_text.see(tk.END)
         except Exception as e:
             tk.messagebox.showerror("Error", f"Error selecting JS file: {e}")
             self.console_text.insert(tk.END, f"\nError selecting JS file: {e}\n")
             self.console_text.see(tk.END)
-            self.logger.error(f"\nError selecting JS file: {e}\n")
+            self.logger.error(f"Error selecting JS file: {e}\n")
 
 
     def browse_csv_file(self):
@@ -170,12 +170,13 @@ class PexipMacroApp(customtkinter.CTk):
                 self.csv_entry.configure(state="readonly")
                 self.console_text.insert(tk.END, f"\nSelected CSV file: {self.file_path}\n")
                 self.console_text.see(tk.END)
-                self.logger.info(f"\nSelected CSV file: {self.file_path}\n")
+                self.logger.info(f"Selected CSV file: {self.file_path}\n")
         except Exception as e:
             tk.messagebox.showerror("Error", f"Error selecting CSV file: {e}")
             self.console_text.insert(tk.END, f"\nError selecting CSV file: {e}\n")
             self.console_text.see(tk.END)
-            self.logger.error(f"\nError selecting CSV file: {e}\n")
+            self.logger.error(f"Error selecting CSV file: {e}\n")
+
 
     def browse_csv2_file(self):
         try:
@@ -187,12 +188,12 @@ class PexipMacroApp(customtkinter.CTk):
                 self.csv2_entry.configure(state="readonly")
                 self.console_text.insert(tk.END, f"\nSelected CSV file: {self.file_path}\n")
                 self.console_text.see(tk.END)
-                self.logger.info(f"\nSelected CSV file: {self.file_path}\n")
+                self.logger.info(f"Selected CSV file: {self.file_path}\n")
         except Exception as e:
             tk.messagebox.showerror("Error", f"Error selecting CSV file: {e}")
             self.console_text.insert(tk.END, f"\nError selecting CSV file: {e}\n")
             self.console_text.see(tk.END)
-            self.logger.error(f"\nError selecting CSV file: {e}\n")
+            self.logger.error(f"Error selecting CSV file: {e}\n")
 
 
     def browse_OTJ_dir_file(self):
@@ -205,10 +206,11 @@ class PexipMacroApp(customtkinter.CTk):
                 self.otj_macro_entry.configure(state="readonly")
                 self.console_text.insert(tk.END, f"\nSelected directory: {self.otj_dir_file_path}\n")
                 self.console_text.see(tk.END)
-                self.logger.info(f"\nSelected directory: {self.otj_dir_file_path}\n")
+                self.logger.info(f"Selected directory: {self.otj_dir_file_path}\n")
         except Exception as e:
             tk.messagebox.showerror("Error", f"Error selecting directory: {e}")
             self.console_text.insert(tk.END, f"\nError selecting directory: {e}\n")
+            self.logger.error(f"Error selecting directory: {e}\n")
 
 
     def upload_macros(self):
@@ -226,9 +228,13 @@ class PexipMacroApp(customtkinter.CTk):
         except ValueError as e:
             tk.messagebox.showerror("Error", str(e))
             self.console_text.insert(tk.END, f"\nError: {e}\n")
+            self.console_text.see(tk.END)
+            self.logger.error(f"Error: {e}\n")
         except Exception as e:
             tk.messagebox.showerror("Error", f"Error uploading macros: {e}")
             self.console_text.insert(tk.END, f"\nError uploading macros: {e}\n")
+            self.console_text.see(tk.END)
+            self.logger.error(f"Error uploading macros: {e}\n")
 
 
     def save_macro(self, endpoint_ip, username, password, macro_name, js_file_path, index):
@@ -237,7 +243,7 @@ class PexipMacroApp(customtkinter.CTk):
                 js_code = f.read()
         except FileNotFoundError as e:
             error_msg = f'Error: File {js_file_path} not found'
-            self.console_text.insert(tk.END, f"Error file {js_file_path} not found\n")
+            self.console_text.insert(tk.END, f"\nError file {js_file_path} not found\n")
             self.console_text.see(tk.END)
             self.logger.error(error_msg)
             self.logger.exception(e)
@@ -294,7 +300,6 @@ class PexipMacroApp(customtkinter.CTk):
             self.console_text.see(tk.END)
 
 
-
     #enable Macro and restart the macro runtime
     def enable_otj_macro(self, endpoint_ip, username, password, macro_name, index):
         # Set up the endpoint URL for the macro
@@ -319,11 +324,11 @@ class PexipMacroApp(customtkinter.CTk):
         if response.status_code == 200:
             self.console_text.insert(tk.END, f"\nRow {index}. {macro_name} enabled successfully for {endpoint_ip}\n")
             self.console_text.see(tk.END)
-            self.logger.info(f"\nRow {index}. {macro_name} enabled successfully for {endpoint_ip}\n")
+            self.logger.info(f"Row {index}. {macro_name} enabled successfully for {endpoint_ip}\n")
         else:
             self.console_text.insert(tk.END, f"\nRow {index}. Error enabling {macro_name} for {endpoint_ip}. Status code: {response.status_code}")
             self.console_text.see(tk.END)
-            self.logger.error(f"\nRow {index}. Error enabling {macro_name} for {endpoint_ip}. Status code: {response.status_code}")
+            self.logger.error(f"Row {index}. Error enabling {macro_name} for {endpoint_ip}. Status code: {response.status_code}")
 
         # Set the payload for restarting the Macro runtime
         tags2 = ['Macros', 'Runtime', 'Restart']
@@ -342,9 +347,9 @@ class PexipMacroApp(customtkinter.CTk):
         if response.status_code == 200:
             self.console_text.insert(tk.END, f"\nRow {index}. Macro runtime restarted successfully for {endpoint_ip}\n")
             self.console_text.see(tk.END)
-            self.logger.info(f"\nRow {index}. Macro runtime restarted successfully for {endpoint_ip}\n")
+            self.logger.info(f"Row {index}. Macro runtime restarted successfully for {endpoint_ip}\n")
         else:
-            self.console_text.insert(tk.END, f"Row {index}. Error restarting Macro runtime for {endpoint_ip}. Status code: {response.status_code}")
+            self.console_text.insert(tk.END, f"\nRow {index}. Error restarting Macro runtime for {endpoint_ip}. Status code: {response.status_code}\n")
             self.console_text.see(tk.END)
             self.logger.error(f"Row {index}. Error restarting Macro runtime for {endpoint_ip}. Status code: {response.status_code}")
 
@@ -355,11 +360,11 @@ class PexipMacroApp(customtkinter.CTk):
             data = pd.read_csv(filename, delimiter=',', header=0)
             self.console_text.insert(tk.END, f"\nMacro uploads starting... Do not close the application until complete.\n")
             self.console_text.see(tk.END)
-            self.logger.info(f"\nMacro uploads starting... Do not close the application until complete.\n")
+            self.logger.info(f"Macro uploads starting... Do not close the application until complete.\n")
             time.sleep(1)
             self.console_text.insert(tk.END, f"\nParsing {filename} for all endpoints\n")
             self.console_text.see(tk.END)
-            self.logger.info(f"\nParsing {filename} for all endpoints\n")
+            self.logger.info(f"Parsing {filename} for all endpoints\n")
             time.sleep(1)
 
             # Check if the column names match (ignoring case)
@@ -425,7 +430,6 @@ class PexipMacroApp(customtkinter.CTk):
                 self.enable_buttons()
                 tk.messagebox.showinfo("Complete", f"{msg}")
 
-
         except pd.errors.EmptyDataError:
             self.logger.error(f"{filename} is empty")
             self.console_text.insert(tk.END, f"\n{filename} is empty\n")
@@ -447,14 +451,14 @@ class PexipMacroApp(customtkinter.CTk):
             messagebox.showerror("Error", "Both CSV data file and directory are required")
             self.console_text.insert(tk.END, f"\nBoth CSV data file and directory are required\n")
             self.console_text.see(tk.END)
-            self.logger.error(f"\nBoth CSV data file and directory are required\n")
+            self.logger.error(f"Both CSV data file and directory are required\n")
             return
 
         try:
             # Check if the directory exists
             self.console_text.insert(tk.END, f"\nScanning directory...\n")
             self.console_text.see(tk.END)
-            self.logger.info(f"\nScanning directory...\n")
+            self.logger.info(f"Scanning directory...\n")
             if not os.path.isdir(dir_path):
                 raise ValueError("Directory does not exist")
 
@@ -475,22 +479,23 @@ class PexipMacroApp(customtkinter.CTk):
                         if 'otj-macro.js' in zip_contents and 'otj-macro-settings.js' in zip_contents:
                             num_dirs += 1
                 except zipfile.BadZipFile:
-                    self.console_text.insert(tk.END, f"Error: {zip_file} is not a valid zip file")
+                    self.console_text.insert(tk.END, f"\nError: {zip_file} is not a valid zip file\n")
                     self.console_text.see(tk.END)
                     self.logger.error(f"Error: {zip_file} is not a valid zip file")
 
             self.console_text.insert(tk.END, f"\nNumber of directories containing otj-macro.js and otj-macro-settings.js: {num_dirs}\n")
             self.console_text.see(tk.END)
-            self.logger.info(f"\nNumber of directories containing otj-macro.js and otj-macro-settings.js: {num_dirs}\n")
+            self.logger.info(f"Number of directories containing otj-macro.js and otj-macro-settings.js: {num_dirs}\n")
             self.show_scan_result(num_dirs)
 
             return num_dirs
 
         except Exception as e:
-            self.console_text.insert(tk.END, f"Error: {str(e)}")
+            self.console_text.insert(tk.END, f"\nError: {str(e)}\n")
             self.console_text.see(tk.END)
             self.logger.exception(f"Error: {str(e)}")
             return 0
+
 
     def extract_zip_files(self):
         # Get the directory path from the Tkinter entry widget
@@ -523,17 +528,17 @@ class PexipMacroApp(customtkinter.CTk):
                             # Extract the contents of the zip file into the subdirectory
                             zip_ref.extractall(sub_dir_path)
                 except zipfile.BadZipFile:
-                    self.console_text.insert(tk.END, f"Error: {zip_file} is not a valid zip file")
+                    self.console_text.insert(tk.END, f"\nError: {zip_file} is not a valid zip file\n")
                     self.console_text.see(tk.END)
                     self.logger.error(f"Error: {zip_file} is not a valid zip file")
 
             self.console_text.insert(tk.END, "\nZip files extracted successfully\n")
             self.console_text.see(tk.END)
-            self.logger.info("\nZip files extracted successfully\n")
+            self.logger.info("Zip files extracted successfully\n")
             self.update_csv_with_macro_paths_threaded(dir_path)
 
         except Exception as e:
-            self.console_text.insert(tk.END, f"Error: {str(e)}")
+            self.console_text.insert(tk.END, f"\nError: {str(e)}\n")
             self.console_text.see(tk.END)
             self.logger.error(f"Error: {str(e)}")
 
@@ -583,21 +588,21 @@ class PexipMacroApp(customtkinter.CTk):
                                     df.at[index, 'macro path'] = os.path.join(full_path, file_name)
                                     self.console_text.insert(tk.END, f"\nRow {index}. Successful: Updated 'macro path' column for the value '{row['name']}' in subdirectory '{subdir_name}' with file path '{os.path.join(full_path, file_name)}'\n")
                                     self.console_text.see(tk.END)
-                                    self.logger.info(f"\nRow {index}. Successful: Updated 'macro path' column for the value '{row['name']}' in subdirectory '{subdir_name}' with file path '{os.path.join(full_path, file_name)}'\n")
+                                    self.logger.info(f"Row {index}. Successful: Updated 'macro path' column for the value '{row['name']}' in subdirectory '{subdir_name}' with file path '{os.path.join(full_path, file_name)}'\n")
                                 elif file_name == 'otj-macro-settings.js':
                                     # write the full file path to the "macro settings path" column for the matching row
                                     df.at[index, 'macro settings path'] = os.path.join(full_path, file_name)
                                     self.console_text.insert(tk.END, f"\nRow {index}. Successful: Updated 'macro settings path' column for the value '{row['name']}' in subdirectory '{subdir_name}' with file path '{os.path.join(full_path, file_name)}'\n")
                                     self.console_text.see(tk.END)
-                                    self.logger.info(f"\nRow {index}. Successful: Updated 'macro settings path' column for the value '{row['name']}' in subdirectory '{subdir_name}' with file path '{os.path.join(full_path, file_name)}'\n")
+                                    self.logger.info(f"Row {index}. Successful: Updated 'macro settings path' column for the value '{row['name']}' in subdirectory '{subdir_name}' with file path '{os.path.join(full_path, file_name)}'\n")
                             if df.loc[index, 'macro path'] and df.loc[index, 'macro settings path']:
                                 self.console_text.insert(tk.END, f"\nSuccessful: The value '{row['name']}' matches the subdirectory name '{subdir_name}' in the directory '{full_path}' and the CSV file has been updated\n")
                                 self.console_text.see(tk.END)
-                                self.logger.info(f"\nSuccessful: The value '{row['name']}' matches the subdirectory name '{subdir_name}' in the directory '{full_path}' and the CSV file has been updated\n")
+                                self.logger.info(f"Successful: The value '{row['name']}' matches the subdirectory name '{subdir_name}' in the directory '{full_path}' and the CSV file has been updated\n")
                             else:
                                 self.console_text.insert(tk.END, f"\nError: Failed to write file paths for the value row {index} '{row['name']}' in the subdirectory '{subdir_name}' in the directory '{full_path}'\n")
                                 self.console_text.see(tk.END)
-                                self.logger.error(f"\nError: Failed to write file paths for the value row {index} '{row['name']}' in the subdirectory '{subdir_name}' in the directory '{full_path}'\n")
+                                self.logger.error(f"Error: Failed to write file paths for the value row {index} '{row['name']}' in the subdirectory '{subdir_name}' in the directory '{full_path}'\n")
 
 
             # write the updated DataFrame back to the CSV file
@@ -609,9 +614,8 @@ class PexipMacroApp(customtkinter.CTk):
         except Exception as e:
             self.console_text.insert(tk.END, f"\nError: {str(e)}\n")
             self.console_text.see(tk.END)
-            self.logger.error(f"\nError: {str(e)}\n")
+            self.logger.error(f"Error: {str(e)}\n")
             messagebox.showerror("Error", str(e))
-
 
 
     def update_csv_with_macro_paths_threaded(self, dir_path):
@@ -619,7 +623,6 @@ class PexipMacroApp(customtkinter.CTk):
         t = threading.Thread(target=self.update_csv_with_macro_paths, args=(dir_path,))
         # start the thread
         t.start()
-
 
 
     def upload_macros_otj(self):
@@ -639,12 +642,12 @@ class PexipMacroApp(customtkinter.CTk):
             tk.messagebox.showerror("Error", str(e))
             self.console_text.insert(tk.END, f"\nError: {e}\n")
             self.console_text.see(tk.END)
-            self.logger.error(f"\nError: {e}\n")
+            self.logger.error(f"Error: {e}\n")
         except Exception as e:
             tk.messagebox.showerror("Error", f"Error uploading macros: {e}")
             self.console_text.insert(tk.END, f"\nError uploading macros: {e}\n")
             self.console_text.see(tk.END)
-            self.logger.error(f"\nError uploading macros: {e}\n")
+            self.logger.error(f"Error uploading macros: {e}\n")
 
 
     def read_csv_data_otj(self):
@@ -654,11 +657,11 @@ class PexipMacroApp(customtkinter.CTk):
             data = pd.read_csv(filename, delimiter=',', header=0)
             self.console_text.insert(tk.END, f"\nMacro uploads starting... Do not close the application until complete.\n")
             self.console_text.see(tk.END)
-            self.logger.info(f"\nMacro uploads starting... Do not close the application until complete.\n")
+            self.logger.info(f"Macro uploads starting... Do not close the application until complete.\n")
             time.sleep(1)
             self.console_text.insert(tk.END, f"\nParsing {filename} for all endpoints\n")
             self.console_text.see(tk.END)
-            self.logger.info(f"\nParsing {filename} for all endpoints\n")
+            self.logger.info(f"Parsing {filename} for all endpoints\n")
             time.sleep(1)
 
             # Check if the column names match (ignoring case)
