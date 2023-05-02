@@ -28,7 +28,7 @@ Single Mode
 8. A .log file will be created in the directory for review
 
 Pexip OTJ Mode
-1. You must have a directory containing the macro zip files from Pexip control center. Do not unzip them as the tool will unzip them for you.
+1. You must have a directory containing the macro zip files from Pexip Control Center. Do not unzip them as the tool will unzip them for you.
 2. Add all macro zip files to the same directory
 3. Do not rename the zip files as the tool will attempt to match the name prefix to the name column in the csv
 4. Fill out the csv that is provided in the zip file. Ensure the name column matches the name prefix of the zip files. 
