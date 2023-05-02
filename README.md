@@ -1,5 +1,5 @@
 # Macro Uploader
-Tool for uploading Cisco Macros to Cisco endpoints
+Tool for uploading Cisco Macros to Cisco endpoints. Created using Python, tkinter, and customtkinter libraries.
 
 The Macro Uploader tool has two modes of opertation. Single Mode and Pexip OTJ Mode. 
 
