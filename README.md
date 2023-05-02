@@ -9,6 +9,6 @@ The Pexip OTJ Mode will upload both the required otj-macro.js and otj-macro-sett
 
 Note the CSV must be formatted with the columns "name", "ip", "username", "password", "macro settings path", and "macro path".
 
-The source code has been compliled into an exe using auto-py-to-exe. Included in the Zip file is also a blank template for the csv file.
+The source code has been compliled into a zipfile containing an exe. Included in the Zip file is also a blank template for the csv file.
 
 
