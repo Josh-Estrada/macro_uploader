@@ -4,7 +4,7 @@ Disclaimer this is NOT AN OFFICAL PEXIP PRODUCT. This is a community-built tool.
 
 This tool is designed to upload Cisco macros in bulk. Created using Python, tkinter, and customtkinter libraries.
 
-The Macro Uploader tool has two modes of opertation. Single Mode and Pexip OTJ Mode. 
+The Macro Uploader tool has two modes of operation. Single Mode and Pexip OTJ Mode. 
 
 The Single Mode will upload a single macro to multiple endpoints via a .csv file.
 
@@ -12,7 +12,7 @@ The Pexip OTJ Mode will upload both the required otj-macro.js and otj-macro-sett
 
 Note the CSV must be formatted with the columns "name", "ip", "username", "password", "macro settings path", and "macro path".
 
-The source code has been compliled into a zipfile containing an exe. Included in the Zip file is also a blank template for the csv file. Windows defender may flag it as a false positive. It has been submitted to Microsoft for review and this section will update as soon as they whitelist it.
+The source code has been compiled into a zip file containing an exe. Included in the Zip file is also a blank template for the csv file. Windows defender may flag it as a false positive. It has been submitted to Microsoft for review and this section will update as soon as they whitelist it.
 
 
 Instructions for use:
@@ -42,6 +42,7 @@ Pexip OTJ Mode
 12. Review the CSV and ensure it populates the paths correctly
 13. Click the Upload Macros Button. The tool will then loop through all rows of the CSV file and attempt to upload. 
 14. A .log file will be created in the directory for review
+
 
 
 
