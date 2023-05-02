@@ -1,6 +1,6 @@
 Macro Uploader Version 1.0.0
 
-NOT AN OFFICAL PEXIP PRODUCT! This is a community-built tool.
+Disclaimer this is NOT AN OFFICAL PEXIP PRODUCT. This is a community-built tool.
 
 This tool is designed to upload Cisco macros in bulk. Created using Python, tkinter, and customtkinter libraries.
 
